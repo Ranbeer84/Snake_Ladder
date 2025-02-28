@@ -14,19 +14,19 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
-        int[] playerPositions = {0, 0};
-        String[] playerNames = {"You", "Opponent"};
+        int[] pPositions = {0, 0};
+        String[] pNames = {"Your", "Opponent"};
         int currentPlayer = 0;
 
         while (true) {
-            System.out.println("\n" + playerNames[currentPlayer] + "'s turn");
+            System.out.println("\n" + pNames[currentPlayer] + "'s turn");
             System.out.println("Press Enter");
             scanner.nextLine();
 
             int diceRoll = random.nextInt(6) + 1;
             System.out.println("Your number " + diceRoll);
 
-            int newPosition = playerPositions[currentPlayer] + diceRoll;
+            int newPosition = pPositions[currentPlayer] + diceRoll;
 
             for (int i = 0; i < SNAKES.length; i++) {
                 if (newPosition == SNAKES[i]) {
@@ -45,14 +45,14 @@ public class Main {
             }
 
             if (newPosition > BOARD_SIZE) {
-                newPosition = playerPositions[currentPlayer];
+                newPosition = pPositions[currentPlayer];
             }
 
-            playerPositions[currentPlayer] = newPosition;
-            System.out.println(playerNames[currentPlayer] + " is at position " + newPosition + " now");
+            pPositions[currentPlayer] = newPosition;
+            System.out.println(pNames[currentPlayer] + " playing piece is at position " + newPosition + " now");
 
             if (newPosition == BOARD_SIZE) {
-                System.out.println(playerNames[currentPlayer] + " wins!");
+                System.out.println(pNames[currentPlayer] + " wins!");
                 break;
             }
 
